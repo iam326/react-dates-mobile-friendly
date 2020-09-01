@@ -1,3 +1,14 @@
 .DateRangePicker_picker__portal {
   z-index: 10000;
 }
+
+.DayPicker_portal__vertical {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+}
+
+.DayPickerNavigation__verticalDefault {
+  position: fixed;
+}
