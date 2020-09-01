@@ -1,41 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
-import 'moment/locale/ja';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
 
-import { DateRangePicker } from 'react-dates';
-import moment from 'moment';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+}));
 
-function App() {
-  const [startDate, setStartDate] = useState<moment.Moment | null>(null);
-  const [endDate, setEndDate] = useState<moment.Moment | null>(null);
-  const [focusedInput, setFocusedInput] = useState<
-    'startDate' | 'endDate' | null
-  >(null);
+const App: React.FC = () => {
+  const classes = useStyles();
   return (
-    <div>
-      <DateRangePicker
-        startDate={startDate}
-        startDateId="startDateId"
-        endDate={endDate}
-        endDateId="endDateId"
-        onDatesChange={(selectedDates) => {
-          setStartDate(selectedDates.startDate);
-          setEndDate(selectedDates.endDate);
-        }}
-        focusedInput={focusedInput}
-        onFocusChange={setFocusedInput}
-        displayFormat="YYYY-MM-DD"
-        noBorder={false}
-        isOutsideRange={() => false}
-        hideKeyboardShortcutsPanel={true}
-        orientation="vertical"
-        withPortal={true}
-      />
+    <div className={classes.root}>
+      <CssBaseline />
+      <Header title="Sample App" />
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <MainContent />
+            </Paper>
+          </Grid>
+        </Container>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
