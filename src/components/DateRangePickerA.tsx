@@ -29,46 +29,42 @@ const DateRangePickerA: React.FC = () => {
   const [focusedInput, setFocusedInput] = useState<
     'startDate' | 'endDate' | null
   >(null);
+
+  const dateRangePicker = (isPortal?: boolean) => (
+    <DateRangePicker
+      startDate={startDate}
+      startDateId="startDateId"
+      endDate={endDate}
+      endDateId="endDateId"
+      focusedInput={focusedInput}
+      isOutsideRange={() => false}
+      withPortal={isPortal}
+      orientation={isPortal ? 'vertical' : 'horizontal'}
+      hideKeyboardShortcutsPanel={true}
+      renderCalendarInfo={() =>
+        isPortal ? (
+          <IconButton aria-label="close" className={classes.close}>
+            <ClearIcon />
+          </IconButton>
+        ) : (
+          <></>
+        )
+      }
+      onFocusChange={setFocusedInput}
+      onDatesChange={(selectedDates) => {
+        setStartDate(selectedDates.startDate);
+        setEndDate(selectedDates.endDate);
+      }}
+    />
+  );
+
   return (
     <>
       <Hidden xsDown implementation="js">
-        <DateRangePicker
-          startDate={startDate}
-          startDateId="startDateId"
-          endDate={endDate}
-          endDateId="endDateId"
-          focusedInput={focusedInput}
-          isOutsideRange={() => false}
-          hideKeyboardShortcutsPanel={true}
-          onFocusChange={setFocusedInput}
-          onDatesChange={(selectedDates) => {
-            setStartDate(selectedDates.startDate);
-            setEndDate(selectedDates.endDate);
-          }}
-        />
+        {dateRangePicker()}
       </Hidden>
       <Hidden smUp implementation="js">
-        <DateRangePicker
-          startDate={startDate}
-          startDateId="startDateId"
-          endDate={endDate}
-          endDateId="endDateId"
-          focusedInput={focusedInput}
-          isOutsideRange={() => false}
-          withPortal={true}
-          orientation="vertical"
-          hideKeyboardShortcutsPanel={true}
-          renderCalendarInfo={() => (
-            <IconButton aria-label="close" className={classes.close}>
-              <ClearIcon />
-            </IconButton>
-          )}
-          onFocusChange={setFocusedInput}
-          onDatesChange={(selectedDates) => {
-            setStartDate(selectedDates.startDate);
-            setEndDate(selectedDates.endDate);
-          }}
-        />
+        {dateRangePicker(true)}
       </Hidden>
     </>
   );

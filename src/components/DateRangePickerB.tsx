@@ -35,6 +35,42 @@ const DateRangePickerB: React.FC = () => {
     'startDate'
   );
   const [display, setDisplay] = useState<boolean>(false);
+
+  const dateRangePicker = (isPortal?: boolean) => (
+    <DayPickerRangeController
+      startDate={startDate}
+      endDate={endDate}
+      focusedInput={focusedInput}
+      isOutsideRange={() => false}
+      withPortal={isPortal}
+      orientation={isPortal ? 'vertical' : 'horizontal'}
+      numberOfMonths={2}
+      minimumNights={0}
+      hideKeyboardShortcutsPanel={true}
+      renderCalendarInfo={() =>
+        isPortal ? (
+          <IconButton aria-label="close" className={classes.close}>
+            <ClearIcon />
+          </IconButton>
+        ) : (
+          <></>
+        )
+      }
+      onFocusChange={(focusedInput) => {
+        setFocusedInput(!focusedInput ? 'startDate' : focusedInput);
+      }}
+      onDatesChange={(selectedDates) => {
+        if (focusedInput === 'startDate') {
+          setStartDate(selectedDates.startDate);
+        } else {
+          setEndDate(selectedDates.endDate);
+          setDisplay(false);
+        }
+      }}
+      onOutsideClick={() => setDisplay(false)}
+    />
+  );
+
   return (
     <>
       <TextField
@@ -53,57 +89,10 @@ const DateRangePickerB: React.FC = () => {
       {display && (
         <>
           <Hidden xsDown implementation="js">
-            <DayPickerRangeController
-              startDate={startDate}
-              endDate={endDate}
-              focusedInput={focusedInput}
-              numberOfMonths={2}
-              minimumNights={0}
-              hideKeyboardShortcutsPanel={true}
-              onFocusChange={(focusedInput) => {
-                setFocusedInput(!focusedInput ? 'startDate' : focusedInput);
-              }}
-              onDatesChange={(selectedDates) => {
-                if (focusedInput === 'startDate') {
-                  setStartDate(selectedDates.startDate);
-                } else {
-                  setEndDate(selectedDates.endDate);
-                  setDisplay(false);
-                }
-              }}
-            />
+            {dateRangePicker()}
           </Hidden>
           <Hidden smUp implementation="js">
-            <DayPickerRangeController
-              startDate={startDate}
-              endDate={endDate}
-              focusedInput={focusedInput}
-              numberOfMonths={2}
-              minimumNights={0}
-              withPortal={true}
-              orientation="vertical"
-              hideKeyboardShortcutsPanel={true}
-              renderCalendarInfo={() => (
-                <IconButton
-                  aria-label="close"
-                  className={classes.close}
-                  onClick={() => setDisplay(false)}
-                >
-                  <ClearIcon />
-                </IconButton>
-              )}
-              onFocusChange={(focusedInput) => {
-                setFocusedInput(!focusedInput ? 'startDate' : focusedInput);
-              }}
-              onDatesChange={(selectedDates) => {
-                if (focusedInput === 'startDate') {
-                  setStartDate(selectedDates.startDate);
-                } else {
-                  setEndDate(selectedDates.endDate);
-                  setDisplay(false);
-                }
-              }}
-            />
+            {dateRangePicker(true)}
           </Hidden>
         </>
       )}
