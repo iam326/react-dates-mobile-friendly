@@ -44,6 +44,9 @@ const DateRangePickerB: React.FC = () => {
             ? `${startDate.format(dateFormat)} ~ ${endDate.format(dateFormat)}`
             : ''
         }
+        InputProps={{
+          readOnly: true,
+        }}
         onFocus={() => setDisplay(true)}
       />
       {display && (
