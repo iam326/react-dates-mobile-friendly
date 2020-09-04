@@ -49,7 +49,11 @@ const DateRangePickerB: React.FC = () => {
       hideKeyboardShortcutsPanel={true}
       renderCalendarInfo={() =>
         isPortal ? (
-          <IconButton aria-label="close" className={classes.close}>
+          <IconButton
+            aria-label="close"
+            className={classes.close}
+            onClick={() => setDisplay(false)}
+          >
             <ClearIcon />
           </IconButton>
         ) : (
