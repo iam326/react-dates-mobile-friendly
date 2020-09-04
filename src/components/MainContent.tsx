@@ -18,9 +18,11 @@ const MainContent: React.FC = () => {
   return (
     <>
       <div>
+        <h2>DateRangePicker</h2>
         <DateRangePickerA />
       </div>
       <div className={classes.margin}>
+        <h2>DayPickerRangeController</h2>
         <DateRangePickerB />
       </div>
     </>
