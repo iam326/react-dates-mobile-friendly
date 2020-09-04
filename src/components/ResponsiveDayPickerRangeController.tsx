@@ -26,7 +26,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const DateRangePickerB: React.FC = () => {
+const ResponsiveDayPickerRangeController: React.FC = () => {
   const classes = useStyles();
   const dateFormat = 'YYYY/MM/DD';
   const [startDate, setStartDate] = useState<moment.Moment | null>(null);
@@ -104,4 +104,4 @@ const DateRangePickerB: React.FC = () => {
   );
 };
 
-export default DateRangePickerB;
+export default ResponsiveDayPickerRangeController;

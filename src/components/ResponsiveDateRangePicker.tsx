@@ -22,7 +22,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const DateRangePickerA: React.FC = () => {
+const ResponsiveDateRangePicker: React.FC = () => {
   const classes = useStyles();
   const [startDate, setStartDate] = useState<moment.Moment | null>(null);
   const [endDate, setEndDate] = useState<moment.Moment | null>(null);
@@ -70,4 +70,4 @@ const DateRangePickerA: React.FC = () => {
   );
 };
 
-export default DateRangePickerA;
+export default ResponsiveDateRangePicker;

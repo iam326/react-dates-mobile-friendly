@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import DateRangePickerA from './DateRangePickerA';
-import DateRangePickerB from './DateRangePickerB';
+import ResponsiveDateRangePicker from './ResponsiveDateRangePicker';
+import ResponsiveDayPickerRangeController from './ResponsiveDayPickerRangeController';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,11 +19,11 @@ const MainContent: React.FC = () => {
     <>
       <div>
         <h2>DateRangePicker</h2>
-        <DateRangePickerA />
+        <ResponsiveDateRangePicker />
       </div>
       <div className={classes.margin}>
         <h2>DayPickerRangeController</h2>
-        <DateRangePickerB />
+        <ResponsiveDayPickerRangeController />
       </div>
     </>
   );
