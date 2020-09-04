@@ -1,5 +1,9 @@
 # react-dates-mobile-friendly
 
+[react-dates](https://github.com/airbnb/react-dates) の DatePicker でレスポンシブする。
+
+TextField と DatePicker がセットになっている `DateRangePicker` コンポーネントのレスポンシブ対応は容易だが、Date Picker 単体の `DayPickerRangeController` コンポーネントは style をカスタムする必要がある。
+
 ## Demo
 
 ![demo](./demo.gif)
