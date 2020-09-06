@@ -30,7 +30,7 @@ const ResponsiveDateRangePicker: React.FC = () => {
     'startDate' | 'endDate' | null
   >(null);
 
-  const dateRangePicker = (isPortal?: boolean) => (
+  const dateRangePicker = (isMobile?: boolean) => (
     <DateRangePicker
       startDate={startDate}
       startDateId="startDateId"
@@ -38,11 +38,11 @@ const ResponsiveDateRangePicker: React.FC = () => {
       endDateId="endDateId"
       focusedInput={focusedInput}
       isOutsideRange={() => false}
-      withPortal={isPortal}
-      orientation={isPortal ? 'vertical' : 'horizontal'}
+      withPortal={isMobile}
+      orientation={isMobile ? 'vertical' : 'horizontal'}
       hideKeyboardShortcutsPanel={true}
       renderCalendarInfo={() =>
-        isPortal ? (
+        isMobile ? (
           <IconButton aria-label="close" className={classes.close}>
             <ClearIcon />
           </IconButton>

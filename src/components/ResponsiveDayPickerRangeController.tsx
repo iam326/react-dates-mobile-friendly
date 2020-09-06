@@ -36,19 +36,19 @@ const ResponsiveDayPickerRangeController: React.FC = () => {
   );
   const [display, setDisplay] = useState<boolean>(false);
 
-  const dateRangePicker = (isPortal?: boolean) => (
+  const dateRangePicker = (isMobile?: boolean) => (
     <DayPickerRangeController
       startDate={startDate}
       endDate={endDate}
       focusedInput={focusedInput}
       isOutsideRange={() => false}
-      withPortal={isPortal}
-      orientation={isPortal ? 'vertical' : 'horizontal'}
+      withPortal={isMobile}
+      orientation={isMobile ? 'vertical' : 'horizontal'}
       numberOfMonths={2}
       minimumNights={0}
       hideKeyboardShortcutsPanel={true}
       renderCalendarInfo={() =>
-        isPortal ? (
+        isMobile ? (
           <IconButton
             aria-label="close"
             className={classes.close}
