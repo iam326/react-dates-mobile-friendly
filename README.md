@@ -2,7 +2,9 @@
 
 [react-dates](https://github.com/airbnb/react-dates) の DatePicker でレスポンシブする。
 
-TextField と DatePicker がセットになっている `DateRangePicker` コンポーネントのレスポンシブ対応は容易だが、Date Picker 単体の `DayPickerRangeController` コンポーネントは style をカスタムする必要がある。
+TextField と DatePicker がセットになっている `DateRangePicker` コンポーネントと、Date Picker 単体の `DayPickerRangeController` コンポーネントを対象とする。
+
+`DateRangePicker` のレスポンシブ対応は比較的容易だが、`DayPickerRangeController`は少しカスタムが多め。
 
 ## Demo
 
